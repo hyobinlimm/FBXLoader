@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+	<Type Name="TL_Math::Vector2">
+		<DisplayString>{{ x: {this->x, g}, y: {this->y, g} }}</DisplayString>
+	</Type>
+
+	<Type Name="TL_Math::Vector3">
+		<DisplayString>{{ x: {this->x, g}, y: {this->y, g}, z: {this->z, g} }}</DisplayString>
+	</Type>
+
+	<Type Name="TL_Math::Vector4">
+		<DisplayString>{{ x: {this->x, g}, y: {this->y, g}, z: {this->z, g}, w: {this->w, g} }}</DisplayString>
+	</Type>
+
+	<Type Name="TL_Math::Matrix">
+		<DisplayString
+			Condition="
+		      (this->_11 == 1) &amp;&amp; (this->_12 == 0) &amp;&amp; (this->_13 == 0) &amp;&amp; (this->_14 == 0) &amp;&amp;
+		      (this->_21 == 0) &amp;&amp; (this->_22 == 1) &amp;&amp; (this->_23 == 0) &amp;&amp; (this->_24 == 0) &amp;&amp;
+		      (this->_31 == 0) &amp;&amp; (this->_32 == 0) &amp;&amp; (this->_33 == 1) &amp;&amp; (this->_34 == 0) &amp;&amp;
+			  (this->_41 == 0) &amp;&amp; (this->_42 == 0) &amp;&amp; (this->_43 == 0) &amp;&amp; (this->_44 == 1)">
+			Matrix::Identity
+		</DisplayString>
+		<DisplayString>
+            {{ m00: {this->m[0][0], g}, m01: {this->m[0][1], g}, m02: {this->m[0][2], g}, m03: {this->m[0][3], g},
+               m10: {this->m[1][0], g}, m11: {this->m[1][1], g}, m12: {this->m[1][2], g}, m13: {this->m[1][3], g},
+               m20: {this->m[2][0], g}, m21: {this->m[2][1], g}, m22: {this->m[2][2], g}, m23: {this->m[2][3], g},
+               m30: {this->m[3][0], g}, m31: {this->m[3][1], g}, m32: {this->m[3][2], g}, m33: {this->m[3][3], g},}}
+        </DisplayString>
+		<Expand>
+			<Item Name="m">m</Item>
+			<!-- <CustomListItems> -->
+			<!-- 	<Variable Name="i" InitialValue="0"/> -->
+			<!-- 	<Loop Condition="i  &lt; 4"> -->
+			<!-- 		<Item Name="{i}">(TL_Math::Vector3*)&amp;m[i * 4]</Item> -->
+			<!-- 		<Exec>++i</Exec> -->
+			<!-- 	</Loop> -->
+			<!-- </CustomListItems> -->
+		</Expand>
+    </Type>
+</AutoVisualizer>
